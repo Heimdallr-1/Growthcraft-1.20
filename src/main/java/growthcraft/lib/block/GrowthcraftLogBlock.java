@@ -59,12 +59,6 @@ public class GrowthcraftLogBlock extends RotatedPillarBlock {
     		if(state.is(GrowthcraftApplesBlocks.APPLE_WOOD.get())) {
     			return GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
     		}
-    		if(state.is(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get())) {
-    			return GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-    		}
-    		if(state.is(GrowthcraftCellarBlocks.CORK_WOOD.get())) {
-    			return GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-    		}
     	}
     	return super.getToolModifiedState(state, context, toolAction, simulate);
     }
