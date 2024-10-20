@@ -119,6 +119,8 @@ public class Reference {
         public static final String CORK_WOOD_LOG = "cork_wood_log";
         public static final String CORK_WOOD_LOG_STRIPPED = "cork_wood_log_stripped";
 		public static final String HAS_CORK_TREE = "has_cork_tree";
+		public static final String CORK_BARK = "cork_bark";
+		public static final String CORK_COASTER = "cork_coaster";
 
         private UnlocalizedName() {
             /* Disable Automatic Creation of Public Constructor */

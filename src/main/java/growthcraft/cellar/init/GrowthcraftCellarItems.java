@@ -1,5 +1,8 @@
 package growthcraft.cellar.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import growthcraft.cellar.item.CellarPotionItem;
 import growthcraft.cellar.item.GrapeSeedsItem;
 import growthcraft.cellar.item.HopsSeedsItem;
@@ -11,9 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GrowthcraftCellarItems {
 
@@ -152,6 +152,10 @@ public class GrowthcraftCellarItems {
     public static final List<RegistryObject<? extends Item>> GRAINS = List.of(
             GRAIN_AMBER, GRAIN_BROWN, GRAIN_COPPER, GRAIN_DARK, GRAIN_DEEP_AMBER,
             GRAIN_DEEP_COPPER, GRAIN_GOLDEN, GRAIN_PALE_GOLDEN
+    );
+    
+    public static final RegistryObject<GrowthcraftItem> CORK_BARK = ITEMS.register(
+            Reference.UnlocalizedName.CORK_BARK, GrowthcraftItem::new
     );
 
     public static void registerCompostables() {

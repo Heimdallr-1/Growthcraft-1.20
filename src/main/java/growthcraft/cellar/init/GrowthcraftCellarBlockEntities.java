@@ -53,6 +53,14 @@ public class GrowthcraftCellarBlockEntities {
             ).build(null)
     );
 
+    public static final RegistryObject<BlockEntityType<CorkCoasterBlockEntity>> CORK_COASTER_BLOCK_ENTITY = BLOCK_ENTITIES.register(
+            Reference.UnlocalizedName.CORK_COASTER,
+            () -> BlockEntityType.Builder.of(
+            		CorkCoasterBlockEntity::new,
+                    GrowthcraftCellarBlocks.CORK_COASTER.get()
+            ).build(null)
+    );
+
     public GrowthcraftCellarBlockEntities() {
         /* Disable automatic default public constructor */
     }

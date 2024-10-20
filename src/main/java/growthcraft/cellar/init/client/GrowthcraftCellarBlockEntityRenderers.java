@@ -1,6 +1,7 @@
 package growthcraft.cellar.init.client;
 
 import growthcraft.cellar.block.entity.renderer.BrewKettleBlockEntityRenderer;
+import growthcraft.cellar.block.entity.renderer.CorkCoasterBlockEntityRenderer;
 import growthcraft.cellar.block.entity.renderer.CultureJarBlockEntityRenderer;
 import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +15,7 @@ public class GrowthcraftCellarBlockEntityRenderers {
     public static void register(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(GrowthcraftCellarBlockEntities.CULTURE_JAR_BLOCK_ENTITY.get(), context -> new CultureJarBlockEntityRenderer());
         event.registerBlockEntityRenderer(GrowthcraftCellarBlockEntities.BREW_KETTLE_BLOCK_ENTITY.get(), context -> new BrewKettleBlockEntityRenderer());
+        event.registerBlockEntityRenderer(GrowthcraftCellarBlockEntities.CORK_COASTER_BLOCK_ENTITY.get(), context -> new CorkCoasterBlockEntityRenderer());
     }
 
     private GrowthcraftCellarBlockEntityRenderers() {
