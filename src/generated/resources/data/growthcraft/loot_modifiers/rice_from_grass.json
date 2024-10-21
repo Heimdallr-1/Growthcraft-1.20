@@ -2,12 +2,25 @@
   "type": "growthcraft:add_item",
   "conditions": [
     {
-      "chance": 0.2,
+      "chance": 0.005,
       "condition": "minecraft:random_chance"
     },
     {
-      "block": "minecraft:grass",
-      "condition": "minecraft:block_state_property"
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "block": "minecraft:grass",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:tall_grass",
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    },
+    {
+      "condition": "growthcraft:module_loaded_loot_check",
+      "module": "rice"
     }
   ],
   "item": "growthcraft_rice:rice_grains"

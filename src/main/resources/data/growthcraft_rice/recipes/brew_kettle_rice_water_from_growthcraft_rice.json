@@ -19,5 +19,18 @@
   "by_product": {
     "item": "growthcraft_rice:rice_cooked",
     "count": 1
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:crops/rice"
+      }
+    },
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "rice/beverages"
+    }
+  ]
 }

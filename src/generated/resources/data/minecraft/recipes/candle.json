@@ -1,6 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "apiary"
+    }
+  ],
   "key": {
     "H": {
       "tag": "growthcraft_apiary:honey_comb"

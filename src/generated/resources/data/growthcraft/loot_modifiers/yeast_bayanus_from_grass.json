@@ -1,5 +1,5 @@
 {
-  "type": "growthcraft:add_item",
+  "type": "growthcraft:add_item_replacing_seeds",
   "conditions": [
     {
       "chance": 0.1,
@@ -8,6 +8,10 @@
     {
       "block": "minecraft:grass",
       "condition": "minecraft:block_state_property"
+    },
+    {
+      "condition": "growthcraft:module_loaded_loot_check",
+      "module": "cellar"
     }
   ],
   "item": "growthcraft_cellar:yeast_bayanus"

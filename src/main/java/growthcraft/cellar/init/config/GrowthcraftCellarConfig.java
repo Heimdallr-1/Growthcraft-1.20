@@ -13,8 +13,6 @@ public class GrowthcraftCellarConfig {
     public static final ForgeConfigSpec SERVER;
     public static final String SERVER_CONFIG = "growthcraft-cellar-server.toml";
 
-    private static final String CATEGORY_BREW_KETTLE = "brew_kettle";
-
     private static ForgeConfigSpec.IntValue lootChancePillagerOutpost;
     private static ForgeConfigSpec.IntValue lootChanceOceanRuin;
     private static ForgeConfigSpec.IntValue lootChanceShipwreck;
@@ -44,30 +42,30 @@ public class GrowthcraftCellarConfig {
         configSpec.setConfig(fileConfig);
     }
 
-    public static void initLootConfig(ForgeConfigSpec.Builder server) {
-        server.push("bottles_in_loot_chest");  // spaces would be fine here but i'll follow the existing style.
-        lootChancePillagerOutpost = server
+    public static void initLootConfig(ForgeConfigSpec.Builder builder) {
+        builder.push("bottles_in_loot_chest");  // spaces would be fine here but i'll follow the existing style.
+        lootChancePillagerOutpost = builder
                 .comment("Percentage chance you'll find a few bottles of mead in pillager tower chest. Number here seems high but that bum place has only one chest and this fits the theme.")
                 .defineInRange("loot_chance_pillager_outpost", 90, 0, 100);
-        lootChanceOceanRuin = server
+        lootChanceOceanRuin = builder
                 .comment("Percentage chance you'll find a few bottles of wine in underwater ruin chest. Default of 10% is not low because ruins will have half a dozen chests.")
                 .defineInRange("loot_chance_underwater_ruins", 10, 0, 100);
-        lootChanceShipwreck = server
+        lootChanceShipwreck = builder
                 .comment("Percentage chance you'll find a few bottles of ale in shipwreck chest.")
                 .defineInRange("loot_chance_shipwreck", 60, 0, 100);
-        lootChanceVillage = server
+        lootChanceVillage = builder
                 .comment("Percentage chance you'll find a few bottles of wine in villager home chest.")
                 .defineInRange("loot_chance_village", 0, 0, 100);   // default is 0 - disabled for now.
-        lootChanceBeachTreasure = server
+        lootChanceBeachTreasure = builder
                 .comment("Percentage chance you'll find a few bottles of wine in buried beach chest.")
                 .defineInRange("loot_chance_beach_treasure", 0, 0, 100);   // default is 0 - disabled for now.
-        lootChanceDarkForestMansion = server
+        lootChanceDarkForestMansion = builder
                 .comment("Percentage chance you'll find a few bottles of lager in woodland mansion chest.")
                 .defineInRange("loot_chance_dark_forest_mansion", 15, 0, 100);
-        lootChanceStronghold = server
+        lootChanceStronghold = builder
                 .comment("Percentage chance you'll find a few bottles of wine in stronghold chest.")
                 .defineInRange("loot_chance_stronghold", 0, 0, 100);   // default is 0 - disabled for now. some absorption won't be too bad.
-        server.pop();
+        builder.pop();
     }
 
     public static int getLootChancePillagerTower() {

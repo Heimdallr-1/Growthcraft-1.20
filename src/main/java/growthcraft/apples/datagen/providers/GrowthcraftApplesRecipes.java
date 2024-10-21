@@ -5,6 +5,8 @@ import java.util.function.Consumer;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesItems;
 import growthcraft.apples.shared.Reference;
+import growthcraft.core.datagen.shared.GrowthcraftRecipeBuilder;
+import growthcraft.core.init.config.OptionalFeatureCondition;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -94,12 +96,13 @@ public class GrowthcraftApplesRecipes extends RecipeProvider{
 		.group(Reference.MODID)
 		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get()))
 		.save(consumer);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GrowthcraftApplesItems.APPLE_SEEDS.get())
-		.requires(Items.APPLE)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(Items.APPLE))
-		.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shapeless(RecipeCategory.FOOD, GrowthcraftApplesItems.APPLE_SEEDS.get())
+			.addCondition(new OptionalFeatureCondition("apples"))
+			.requires(Items.APPLE)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(Items.APPLE))
+			.save(consumer);
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GrowthcraftApplesBlocks.APPLE_WOOD.get(), 3)
 		.pattern("##")

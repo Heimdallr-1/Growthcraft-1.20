@@ -1,18 +1,19 @@
 package growthcraft.core.init;
 
 import growthcraft.core.block.RopeBlock;
+import growthcraft.core.init.config.BooleanFromConfigFileCondition;
 import growthcraft.core.item.CrowbarItem;
 import growthcraft.core.item.RopeItem;
 import growthcraft.core.item.WrenchItem;
 import growthcraft.core.shared.Reference;
 import growthcraft.lib.item.GrowthcraftItem;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public class GrowthcraftItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
@@ -93,10 +94,11 @@ public class GrowthcraftItems {
             Reference.UnlocalizedName.WRENCH, WrenchItem::new
     );
 
-    public static boolean excludeItemRegistry(ResourceLocation registryName) {
-        ArrayList<String> excludeItems = new ArrayList<>();
-        //excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
-        return excludeItems.contains(registryName.toString());
+    public static boolean includeInCreativeTab(Supplier<Item> item) {
+        if (item.get() instanceof CrowbarItem) {
+            return BooleanFromConfigFileCondition.testConfigValue("core", "other.crowbars_enabled");
+        }
+        return true;
     }
 
 }

@@ -1,7 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "growthcraft_bamboo",
+  "conditions": [
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "apiary"
+    }
+  ],
+  "group": "growthcraft_apiary",
   "key": {
     "B": [
       {

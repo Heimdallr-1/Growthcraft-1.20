@@ -28,7 +28,7 @@ public class GrowthcraftCreativeModeTabs {
                 );
                 // Add items
                 GrowthcraftItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                    if (!GrowthcraftItems.excludeItemRegistry(itemRegistryObject.getId())) {
+                    if (GrowthcraftItems.includeInCreativeTab(itemRegistryObject)) {
                         output.accept(new ItemStack(itemRegistryObject.get()));
                     }
                 });

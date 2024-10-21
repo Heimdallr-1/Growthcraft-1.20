@@ -8,6 +8,10 @@
     {
       "block": "minecraft:bee_nest",
       "condition": "minecraft:block_state_property"
+    },
+    {
+      "condition": "growthcraft:module_loaded_loot_check",
+      "module": "apiary"
     }
   ],
   "item": "growthcraft_apiary:bee"

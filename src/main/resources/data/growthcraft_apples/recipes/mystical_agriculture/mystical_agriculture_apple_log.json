@@ -8,6 +8,10 @@
     {
       "type": "mysticalagriculture:crop_enabled",
       "crop": "mysticalagriculture:wood"
+    },
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "apples"
     }
   ],
   "pattern": [
