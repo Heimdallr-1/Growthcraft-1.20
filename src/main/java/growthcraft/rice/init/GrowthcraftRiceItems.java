@@ -1,19 +1,20 @@
 package growthcraft.rice.init;
 
+import growthcraft.core.init.config.OptionalFeatureCondition;
 import growthcraft.lib.item.GrowthcraftBowlFoodItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
 import growthcraft.rice.item.CultivatorItem;
 import growthcraft.rice.item.RiceSeedItem;
 import growthcraft.rice.shared.Reference;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public class GrowthcraftRiceItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
@@ -70,24 +71,24 @@ public class GrowthcraftRiceItems {
     );
 
     public static void registerCompostables() {
-        float f = 0.3F;
-        float f1 = 0.5F;
-        float f2 = 0.65F;
-        float f3 = 0.85F;
-        float f4 = 1.0F;
-
+        float chanceLow = 0.1F;
+        float chanceMedium = 0.4F;
+        float chanceHigh = 0.85F;
+        float definitely = 1.0F;
         // Add rice as a compostable
-        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE.get(), f2);
-        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_COOKED.get(), f3);
-        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_STALK.get(), f1);
-        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.SUSHI_ROLL.get(), f4);
-        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.YEAST_SEISHU.get(), f4);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE.get(), chanceLow);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_GRAINS.get(), chanceMedium);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_COOKED.get(), chanceMedium);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_STALK.get(), chanceMedium);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.SUSHI_ROLL.get(), chanceHigh);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.YEAST_SEISHU.get(), definitely);
     }
 
-    public static boolean excludeItemRegistry(ResourceLocation registryName) {
-        ArrayList<String> excludeItems = new ArrayList<>();
-        //excludeItems.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
-        return excludeItems.contains(registryName.toString());
+    public static boolean includeInCreativeTab(Supplier<Item> item) {
+        if (item.get() instanceof BucketItem) {
+            return OptionalFeatureCondition.testModuleOrModuleFeature("rice/beverages");
+        }
+        return OptionalFeatureCondition.testModuleOrModuleFeature("rice");
     }
 
     private GrowthcraftRiceItems() {

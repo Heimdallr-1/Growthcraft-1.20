@@ -1,6 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "apiary"
+    }
+  ],
   "group": "growthcraft_apiary",
   "key": {
     "A": {

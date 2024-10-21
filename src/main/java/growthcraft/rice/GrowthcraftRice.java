@@ -48,13 +48,13 @@ public class GrowthcraftRice {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do Nothing for now ...
+        // Do nothing
     }
 
     public void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == GrowthcraftCreativeModeTabs.CREATIVE_TAB.get()) {
             GrowthcraftRiceItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                if (!GrowthcraftRiceItems.excludeItemRegistry(itemRegistryObject.getId())) {
+                if (GrowthcraftRiceItems.includeInCreativeTab(itemRegistryObject)) {
                     event.accept(new ItemStack(itemRegistryObject.get()));
                 }
             });

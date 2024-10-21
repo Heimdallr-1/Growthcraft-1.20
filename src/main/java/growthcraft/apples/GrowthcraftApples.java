@@ -53,14 +53,14 @@ public class GrowthcraftApples {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Growthcraft Apples starting up ...");
+        //LOGGER.info("Growthcraft Apples starting up ...");
     }
 
     public void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == GrowthcraftCreativeModeTabs.CREATIVE_TAB.get()) {
             GrowthcraftApplesItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                if (!GrowthcraftApplesItems.excludeItemRegistry(itemRegistryObject.getId())) {
-                    event.accept(new ItemStack(itemRegistryObject.get()));
+                if (GrowthcraftApplesItems.includeInCreativeTab(itemRegistryObject)) {
+                    event.accept(itemRegistryObject);
                 }
             });
         }

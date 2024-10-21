@@ -8,6 +8,10 @@
     {
       "type": "mysticalagriculture:crop_enabled",
       "crop": "mysticalagriculture:honey"
+    },
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "apiary"
     }
   ],
   "pattern": [

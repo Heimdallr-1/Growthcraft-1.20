@@ -25,6 +25,8 @@ public class GrowthcraftConfig {
     private static ForgeConfigSpec.IntValue saltOreGenHeightMax;
     private static ForgeConfigSpec.IntValue saltOreGenSpreadAmount;
 
+    private static ForgeConfigSpec.BooleanValue crowbarsEnabled;
+
     static {
         initServerConfig(SERVER_BUILDER);
         SERVER = SERVER_BUILDER.build();
@@ -72,6 +74,10 @@ public class GrowthcraftConfig {
         saltOreGenSpreadAmount = specBuilder
                 .comment("Set to the satutration spread for salt ore generation within a chunk.")
                 .defineInRange(String.format("%s.%s", CATEGORY_WORLDGEN, "saltOreGenSpreadAmount"), 10, 1, 20);
+        ///////////////////////////////
+        crowbarsEnabled = specBuilder
+                .comment("Enable or disable crowbar tools. Currently not used by any module.") //...but this is a community mod, not mine, so i can't get satisfaction from deleting them.   MF
+                .define(String.format("%s.%s", "other", "crowbars_enabled"), false);
     }
 
     // TODO: Implement usage to allow server admins to prevent the salt generation.
