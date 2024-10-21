@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import growthcraft.apples.block.AppleTreeLeaves;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.shared.Reference;
-import growthcraft.core.Growthcraft;
 import growthcraft.core.block.RopeBlock;
 import growthcraft.core.init.GrowthcraftItems;
 import growthcraft.lib.block.GrowthcraftDoorBlock;

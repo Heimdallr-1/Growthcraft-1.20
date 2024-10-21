@@ -11,7 +11,7 @@ public class AppleTreeGrower extends AbstractTreeGrower {
 
     @Nullable
     @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource randomSource, boolean largeHive) {
+    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource randomSource, boolean pHasFlowers) {
         return GrowthcraftApplesConfiguredFeatures.APPLE_TREE_KEY;
     }
 }

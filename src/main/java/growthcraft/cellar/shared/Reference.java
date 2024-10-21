@@ -111,6 +111,14 @@ public class Reference {
 		public static final String TAG_BARLEY = "grain/barley";
 		public static final String TAG_GRAPE_SEEDS = "seeds/grapes";
 		public static final String TAG_GRAPE_FRUITS = "fruits/grapes";
+		public static final String CORK_TREE = "cork_tree";
+        public static final String CORK_TREE_LEAVES = "cork_tree_leaves";
+        public static final String CORK_TREE_SAPLING = "cork_tree_sapling";
+        public static final String CORK_WOOD = "cork_wood";
+        public static final String CORK_WOOD_STRIPPED = "cork_wood_stripped";
+        public static final String CORK_WOOD_LOG = "cork_wood_log";
+        public static final String CORK_WOOD_LOG_STRIPPED = "cork_wood_log_stripped";
+		public static final String HAS_CORK_TREE = "has_cork_tree";
 
         private UnlocalizedName() {
             /* Disable Automatic Creation of Public Constructor */

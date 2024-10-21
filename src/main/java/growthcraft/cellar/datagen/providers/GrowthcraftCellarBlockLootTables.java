@@ -4,6 +4,7 @@ package growthcraft.cellar.datagen.providers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
 import growthcraft.cellar.init.GrowthcraftCellarBlocks;
 import growthcraft.cellar.init.GrowthcraftCellarFluids;
@@ -37,6 +38,12 @@ public class GrowthcraftCellarBlockLootTables extends VanillaBlockLoot{
 		add(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE_LEAVES.get(), createMangroveLeavesDrops(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE_LEAVES.get()));
 		add(GrowthcraftCellarBlocks.RED_GRAPE_VINE_LEAVES.get(), createMangroveLeavesDrops(GrowthcraftCellarBlocks.RED_GRAPE_VINE_LEAVES.get()));
 		add(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE_LEAVES.get(), createMangroveLeavesDrops(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE_LEAVES.get()));
+		add(GrowthcraftCellarBlocks.CORK_TREE_LEAVES.get(), createLeavesDrops(GrowthcraftCellarBlocks.CORK_TREE_LEAVES.get(), GrowthcraftCellarBlocks.CORK_TREE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+		dropSelf(GrowthcraftCellarBlocks.CORK_TREE_SAPLING.get());
+		dropSelf(GrowthcraftCellarBlocks.CORK_WOOD.get());
+		dropSelf(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get());
+		dropSelf(GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get());
+		dropSelf(GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get());
 	}
 	
     @Override

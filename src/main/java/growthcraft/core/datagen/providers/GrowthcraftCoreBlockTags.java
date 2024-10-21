@@ -93,7 +93,11 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get())
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG_STRIPPED.get())
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD.get())
-		.add(GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get());
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get());
 		tag(BlockTags.WOODEN_STAIRS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_STAIRS.get());
 		tag(BlockTags.WOODEN_FENCES)
@@ -105,7 +109,8 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		tag(BlockTags.WOODEN_TRAPDOORS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_TRAPDOOR.get());
 		tag(BlockTags.LEAVES)
-		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get());
+		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get())
+		.add(GrowthcraftCellarBlocks.CORK_TREE_LEAVES.get());
 		tag(BlockTags.MINEABLE_WITH_AXE)
 		.add(GrowthcraftCellarBlocks.FERMENTATION_BARREL_OAK.get())
 		.add(GrowthcraftBlocks.ROPE_LINEN_ACACIA_FENCE.get())

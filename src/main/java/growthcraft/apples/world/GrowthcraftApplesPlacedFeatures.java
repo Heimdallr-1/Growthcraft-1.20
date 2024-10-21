@@ -1,5 +1,7 @@
 package growthcraft.apples.world;
 
+import java.util.List;
+
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.shared.Reference;
 import net.minecraft.core.Holder;
@@ -14,18 +16,19 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
-import java.util.List;
-
 public class GrowthcraftApplesPlacedFeatures {
+	
+	private GrowthcraftApplesPlacedFeatures() {
+		/* Prevent generation of public constructor */
+	}
 
     public static final ResourceKey<PlacedFeature> APPLE_TREE_PLACED_KEY = createKey(Reference.UnlocalizedName.APPLE_TREE + "_placed");
-
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, APPLE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GrowthcraftApplesConfiguredFeatures.APPLE_TREE_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2), GrowthcraftApplesBlocks.APPLE_TREE_SAPLING.get()));
+        		 VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.05F, 1), GrowthcraftApplesBlocks.APPLE_TREE_SAPLING.get()));
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
@@ -36,11 +39,4 @@ public class GrowthcraftApplesPlacedFeatures {
                                  List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
-
-    private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
-                                 PlacementModifier... modifiers) {
-        register(context, key, configuration, List.of(modifiers));
-    }
-
-
 }

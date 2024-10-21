@@ -2,6 +2,7 @@ package growthcraft.core.datagen;
 
 import java.util.concurrent.CompletableFuture;
 
+import growthcraft.core.datagen.providers.GrowthcraftCoreBiomeTagsProvider;
 import growthcraft.core.datagen.providers.GrowthcraftCoreBlockTags;
 import growthcraft.core.datagen.providers.GrowthcraftCoreGlobalLootModifiersProvider;
 import growthcraft.core.datagen.providers.GrowthcraftCoreItemTags;
@@ -32,11 +33,12 @@ public class GrowthcraftCoreDataGenerators {
 
 		GrowthcraftCoreBlockTags blockTags = new GrowthcraftCoreBlockTags(packOutput, lookupProvider, existingFileHelper);
 		generator.addProvider(event.includeServer(), blockTags);
-		generator.addProvider(event.includeServer(),  new GrowthcraftCoreItemTags(packOutput, lookupProvider, blockTags, existingFileHelper));
+		generator.addProvider(event.includeServer(), new GrowthcraftCoreItemTags(packOutput, lookupProvider, blockTags, existingFileHelper));
 		generator.addProvider(event.includeServer(), new GrowthcraftCoreRecipes(packOutput));
 		generator.addProvider(event.includeServer(), new GrowthcraftCoreLootTableProvider(packOutput));
 		generator.addProvider(event.includeServer(), new GrowthcraftCoreGlobalLootModifiersProvider(packOutput));
 		generator.addProvider(event.includeServer(), new GrowthcraftCoreWorldGenProvider(packOutput, lookupProvider));
+		generator.addProvider(event.includeServer(), new GrowthcraftCoreBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
 //		generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
 //                List.of(new LootTableProvider.SubProviderEntry(GrowthcraftCoreLootTables::new, LootContextParamSets.BLOCK))));
 	}
