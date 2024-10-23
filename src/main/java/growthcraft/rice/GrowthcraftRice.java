@@ -48,7 +48,7 @@ public class GrowthcraftRice {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do nothing
+        GrowthcraftRiceItems.registerCompostables();
     }
 
     public void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {

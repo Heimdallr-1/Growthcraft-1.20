@@ -97,6 +97,7 @@ public class GrowthcraftCellar {
 
     private void setup(final FMLCommonSetupEvent event) {
         GrowthcraftCellarMessages.register();
+        GrowthcraftCellarItems.registerCompostables();
     }
 
     public void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
