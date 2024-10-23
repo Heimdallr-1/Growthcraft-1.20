@@ -28,7 +28,7 @@ public class GrowthcraftCellarPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, CORK_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GrowthcraftCellarConfiguredFeatures.CORK_TREE_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.05F, 1), GrowthcraftCellarBlocks.CORK_TREE_SAPLING.get()));
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.02F, 1), GrowthcraftCellarBlocks.CORK_TREE_SAPLING.get()));
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {

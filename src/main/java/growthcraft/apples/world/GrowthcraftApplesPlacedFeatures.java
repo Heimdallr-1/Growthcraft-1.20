@@ -28,7 +28,7 @@ public class GrowthcraftApplesPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, APPLE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GrowthcraftApplesConfiguredFeatures.APPLE_TREE_KEY),
-        		 VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.05F, 1), GrowthcraftApplesBlocks.APPLE_TREE_SAPLING.get()));
+        		 VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.02F, 1), GrowthcraftApplesBlocks.APPLE_TREE_SAPLING.get()));
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {

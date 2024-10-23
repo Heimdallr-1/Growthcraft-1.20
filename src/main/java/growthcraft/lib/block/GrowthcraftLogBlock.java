@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 
 public class GrowthcraftLogBlock extends RotatedPillarBlock {
     public GrowthcraftLogBlock() {
@@ -51,7 +52,7 @@ public class GrowthcraftLogBlock extends RotatedPillarBlock {
     //we could also do sub classes or our own map to match logs&stripped logs, but for 4 blocks, this should be enough
     @Override
     public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
-    	if (context.getItemInHand().getItem() instanceof AxeItem) {
+    	if (context.getItemInHand().canPerformAction(ToolActions.AXE_STRIP)) {
     		if(state.is(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get())) {
     			return GrowthcraftApplesBlocks.APPLE_WOOD_LOG_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
     		}
