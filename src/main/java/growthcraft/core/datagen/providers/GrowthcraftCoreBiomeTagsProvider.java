@@ -11,6 +11,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -22,9 +24,14 @@ public class GrowthcraftCoreBiomeTagsProvider extends BiomeTagsProvider{
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-    	tag(GrowthcraftCellarTags.Biomes.HAS_CORK_TREE).add(Biomes.DARK_FOREST);
-    	tag(GrowthcraftCellarTags.Biomes.HAS_CORK_TREE).add(Biomes.MEADOW);
-    	tag(GrowthcraftApplesTags.Biomes.HAS_APPLE_TREE).add(Biomes.FOREST);
-    	tag(GrowthcraftApplesTags.Biomes.HAS_APPLE_TREE).add(Biomes.PLAINS);
+    	tag(GrowthcraftCellarTags.Biomes.HAS_CORK_TREE)
+    	.add(Biomes.DARK_FOREST)
+    	.add(Biomes.MEADOW)
+    	.add(TagEntry.optionalElement(new ResourceLocation("farmersdelight", "stove")));
+    	tag(GrowthcraftApplesTags.Biomes.HAS_APPLE_TREE)
+    	.add(Biomes.FOREST)
+    	.add(Biomes.PLAINS)
+    	.add(TagEntry.optionalElement(new ResourceLocation("biomesoplenty", "orchard")))
+    	.add(TagEntry.optionalElement(new ResourceLocation("biomeswevegone", "orchard")));
     }
 }

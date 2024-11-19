@@ -8,7 +8,6 @@ import growthcraft.lib.block.GrowthcraftLogBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
@@ -17,6 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
+import oshi.driver.windows.perfmon.SystemInformation.ContextSwitchProperty;
 
 public class CorkLog extends GrowthcraftLogBlock{
 	public static final BooleanProperty REGROW = BooleanProperty.create("regrow");
@@ -45,9 +46,11 @@ public class CorkLog extends GrowthcraftLogBlock{
 	
 	@Override
 	public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
-	    if (context.getItemInHand().getItem() instanceof AxeItem) {
+	    if (context.getItemInHand().canPerformAction(ToolActions.AXE_STRIP)) {
 	    	if(state.is(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get())) {
-	    		popResource(context.getLevel(), context.getClickedPos(), new ItemStack(GrowthcraftCellarItems.CORK_BARK.get()));
+	    		System.out.println("hello " + context.getClickedPos());
+	    		System.out.println("hello2 " + context.getClickedPos().relative(context.getClickedFace(), 1));
+	    		popResource(context.getLevel(), context.getClickedPos().relative(context.getClickedFace(), 1), new ItemStack(GrowthcraftCellarItems.CORK_BARK.get()));
 	    		return GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS)).setValue(REGROW, state.getValue(REGROW));
 	    	}
 	    	if(state.is(GrowthcraftCellarBlocks.CORK_WOOD.get())) {

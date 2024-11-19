@@ -4,11 +4,13 @@ import growthcraft.cellar.block.entity.CorkCoasterBlockEntity;
 import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
 import growthcraft.core.utils.BlockPropertiesUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -21,12 +23,19 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CorkCoasterBlock extends BaseEntityBlock {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-
+	public static final BooleanProperty ITEM = BooleanProperty.create("item");
+	private static VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 2.0D, 15.0D);
+	private static VoxelShape SHAPE_WITH_BOTTLE = Shapes.or(Block.box(5.0D, 0.0D, 5.0D, 11.0D, 16.0D, 11.0D), SHAPE);
+	
 	public CorkCoasterBlock() {
 		this(getInitProperties());
 	}
@@ -46,14 +55,20 @@ public class CorkCoasterBlock extends BaseEntityBlock {
 	}
 	
     @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    	return state.getValue(ITEM).booleanValue() ? SHAPE_WITH_BOTTLE : SHAPE;
+    }
+	
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return defaultBlockState()
+        		.setValue(FACING, context.getHorizontalDirection().getOpposite())
+        		.setValue(ITEM, Boolean.FALSE);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(FACING);
+        super.createBlockStateDefinition(builder.add(FACING).add(ITEM));
     }
 
     @Override
@@ -86,7 +101,7 @@ public class CorkCoasterBlock extends BaseEntityBlock {
             	blockEntity.setItem(slot, itemInHand);
             	pPlayer.setItemInHand(pHand, slotStack);
 
-//                pState = pState.setValue(SWORD, !blockEntity.isEmpty());
+                pState = pState.setValue(ITEM, !blockEntity.isEmpty());
             	pLevel.setBlock(pPos, pState, UPDATE_ALL);
                 return InteractionResult.SUCCESS; 
             }
