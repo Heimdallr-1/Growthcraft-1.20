@@ -1,8 +1,5 @@
 package growthcraft.cellar.init;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import growthcraft.cellar.item.CellarPotionItem;
 import growthcraft.cellar.item.GrapeSeedsItem;
 import growthcraft.cellar.item.HopsSeedsItem;
@@ -11,9 +8,14 @@ import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class GrowthcraftCellarItems {
 
@@ -159,20 +161,31 @@ public class GrowthcraftCellarItems {
     );
 
     public static void registerCompostables() {
-        float f = 0.3F;
+        float f0 = 0.3F;
         float f1 = 0.5F;
         float f2 = 0.65F;
         float f3 = 0.85F;
         float f4 = 1.0F;
 
-        // ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE.get(), f2);
-
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAPE_WHITE_SEEDS.get(), 0.1f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAPE_RED_SEEDS.get(), 0.1f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAPE_PURPLE_SEED.get(), 0.1f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAPE_WHITE.get(), 0.6f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAPE_RED.get(), 0.6f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAPE_PURPLE.get(), 0.6f);
+        for (RegistryObject<? extends Item> grain : GRAINS) {
+            ComposterBlock.COMPOSTABLES.put(grain.get(), 0.2f);
+        }
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.GRAIN.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.HOPS.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.HOPS_SEED.get(), 0.1f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.YEAST_LAGER.get(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.YEAST_BAYANUS.get(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftCellarItems.YEAST_BREWERS.get(), 0.5f);
     }
 
     public static boolean excludeItemRegistry(ResourceLocation registryName) {
-        ArrayList<String> excludeItems = new ArrayList<>();
-        //excludeItems.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
-        return excludeItems.contains(registryName.toString());
+        return false;
     }
 
     private GrowthcraftCellarItems() {

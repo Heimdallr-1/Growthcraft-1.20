@@ -7,16 +7,14 @@ import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.File;
 
-/**
- * @deprecated (9.2.0, "This config does not have a use.")
- */
-@Deprecated(since = "9.2.0", forRemoval = true)
 public class GrowthcraftApplesConfig {
 
     public static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SERVER;
 
     public static final String SERVER_CONFIG = "growthcraft-apples-server.toml";
+
+    private static ForgeConfigSpec.BooleanValue moduleEnabled;
 
     static {
         initServerConfig(SERVER_BUILDER);
@@ -31,7 +29,7 @@ public class GrowthcraftApplesConfig {
         loadConfig(SERVER, FMLPaths.CONFIGDIR.get().resolve(SERVER_CONFIG).toString());
     }
 
-    public static void loadConfig(ForgeConfigSpec configSpec, String path) {
+    private static void loadConfig(ForgeConfigSpec configSpec, String path) {
         final CommentedFileConfig fileConfig = CommentedFileConfig.builder(
                 new File(path)).sync().autosave().writingMode(WritingMode.REPLACE).build();
 
@@ -39,10 +37,18 @@ public class GrowthcraftApplesConfig {
         configSpec.setConfig(fileConfig);
     }
 
-    public static void initServerConfig(ForgeConfigSpec.Builder specBuilder) {
-        // Nothing to config yet
+    private static void initServerConfig(ForgeConfigSpec.Builder builder) {
+        builder.push("_master_switch_");
+        moduleEnabled = builder
+                .comment("This master-switch lets you disable the Apples module - currently just apple trees and wooden blocks. Apples themselves or apple cider are not affected.")
+                .define("module_enabled", true);
+        builder.pop();  // master_switch
     }
 
-    // TODO: Add config for apple growth range check.
+    ////////////////////////////////////////////////////////
 
+    public static Boolean getModuleEnabled()
+    {
+        return moduleEnabled.get();
+    }
 }

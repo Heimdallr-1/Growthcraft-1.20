@@ -55,14 +55,14 @@ public class GrowthcraftApiary {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Growthcraft Apiary starting up server-side ...");
+        //LOGGER.info("Growthcraft Apiary starting up server-side ...");
     }
 
     public void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == GrowthcraftCreativeModeTabs.CREATIVE_TAB.get()) {
             GrowthcraftApiaryItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                if (!GrowthcraftApiaryItems.excludeItemRegistry(itemRegistryObject.getId())) {
-                    event.accept(new ItemStack(itemRegistryObject.get()));
+                if (GrowthcraftApiaryItems.includeInCreativeTab(itemRegistryObject)) {
+                    event.accept(itemRegistryObject);
                 }
             });
         }

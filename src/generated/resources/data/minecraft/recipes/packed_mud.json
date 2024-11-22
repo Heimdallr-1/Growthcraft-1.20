@@ -1,6 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "growthcraft:feature_enabled",
+      "feature": "rice"
+    }
+  ],
   "group": "growthcraft_rice",
   "ingredients": [
     {

@@ -8,7 +8,10 @@ import blusunrize.immersiveengineering.ImmersiveEngineering;
 import blusunrize.immersiveengineering.api.crafting.ClocheRenderFunction.ClocheRenderReference;
 import blusunrize.immersiveengineering.api.crafting.builders.ClocheRecipeBuilder;
 import blusunrize.immersiveengineering.client.utils.ClocheRenderFunctions.RenderFunctionCrop;
+import growthcraft.core.Growthcraft;
+import growthcraft.core.datagen.shared.GrowthcraftRecipeBuilder;
 import growthcraft.core.init.GrowthcraftTags;
+import growthcraft.core.init.config.OptionalFeatureCondition;
 import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import growthcraft.rice.init.GrowthcraftRiceItems;
 import growthcraft.rice.shared.Reference;
@@ -40,91 +43,101 @@ public class GrowthcraftRiceRecipes extends RecipeProvider{
 
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GrowthcraftRiceItems.CULTIVATOR.get())
-		.pattern("iIi")
-		.pattern("iSi")
-		.pattern(" S ")
-		.define('i', Tags.Items.NUGGETS_IRON)
-		.define('I', Tags.Items.INGOTS_IRON)
-		.define('S', Tags.Items.RODS_WOODEN)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
-		.save(consumer);
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GrowthcraftRiceItems.KNIFE.get())
-		.pattern("  I")
-		.pattern(" I ")
-		.pattern("S  ")
-		.define('I', Tags.Items.INGOTS_IRON)
-		.define('S', Tags.Items.RODS_WOODEN)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
-		.save(consumer);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GrowthcraftRiceItems.RICE_GRAINS.get(), 4)
-		.requires(GrowthcraftRiceItems.RICE.get())
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE.get()).build()))
-		.save(consumer);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GrowthcraftRiceItems.RICE.get())
-		.requires(GrowthcraftRiceItems.RICE_GRAINS.get(), 4)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE.get()).build()))
-		.save(consumer);
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GrowthcraftRiceItems.SUSHI_ROLL.get(), 12)
-		.pattern(" F ")
-		.pattern("RRR")
-		.pattern("KKK")
-		.define('F', ItemTags.FISHES)
-		.define('R', GrowthcraftRiceItems.RICE_COOKED.get())
-		.define('K', Items.DRIED_KELP)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftRiceItems.RICE_COOKED.get()))
-		.save(consumer);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GrowthcraftRiceItems.CHICKEN_RICE.get())
-		.requires(GrowthcraftRiceItems.RICE_COOKED.get())
-		.requires(Items.COOKED_CHICKEN)
-		.requires(Items.BOWL)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE_COOKED.get()).build()))
-		.save(consumer);
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GrowthcraftRiceItems.ONIGIRI.get(), 1)
-		.pattern(" R ")
-		.pattern(" S ")
-		.pattern(" K ")
-		.define('S', GrowthcraftTags.Items.SALT)
-		.define('R', GrowthcraftRiceItems.RICE_COOKED.get())
-		.define('K', Items.DRIED_KELP)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftRiceItems.RICE_COOKED.get()))
-		.save(consumer);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Blocks.PACKED_MUD)
-		.requires(GrowthcraftRiceItems.RICE_STALK.get())
-		.requires(Blocks.MUD)
-		.group(Reference.MODID)
-		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE_STALK.get()).build()))
-		.save(consumer);
+		GrowthcraftRecipeBuilder.crafting_shaped(RecipeCategory.TOOLS, GrowthcraftRiceItems.CULTIVATOR.get())
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.pattern("iIi")
+			.pattern("iSi")
+			.pattern(" S ")
+			.define('i', Tags.Items.NUGGETS_IRON)
+			.define('I', Tags.Items.INGOTS_IRON)
+			.define('S', Tags.Items.RODS_WOODEN)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+			.save(consumer);
 
-		//Mekanism Bio Fule recipe, may not be needed in 1.21
+		GrowthcraftRecipeBuilder.crafting_shaped(RecipeCategory.TOOLS, GrowthcraftRiceItems.KNIFE.get())
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.pattern("  I")
+			.pattern(" I ")
+			.pattern("S  ")
+			.define('I', Tags.Items.INGOTS_IRON)
+			.define('S', Tags.Items.RODS_WOODEN)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+			.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shapeless(RecipeCategory.FOOD, GrowthcraftRiceItems.RICE_GRAINS.get(), 4)
+			.requires(GrowthcraftRiceItems.RICE.get())
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE.get()).build()))
+			.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shapeless(RecipeCategory.FOOD, GrowthcraftRiceItems.RICE.get())
+			.requires(GrowthcraftRiceItems.RICE_GRAINS.get(), 4)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE.get()).build()))
+			.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shaped(RecipeCategory.FOOD, GrowthcraftRiceItems.SUSHI_ROLL.get(), 12)
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.pattern(" F ")
+			.pattern("RRR")
+			.pattern("KKK")
+			.define('F', ItemTags.FISHES)
+			.define('R', GrowthcraftRiceItems.RICE_COOKED.get())
+			.define('K', Items.DRIED_KELP)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftRiceItems.RICE_COOKED.get()))
+			.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shapeless(RecipeCategory.FOOD, GrowthcraftRiceItems.CHICKEN_RICE.get())
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.requires(GrowthcraftRiceItems.RICE_COOKED.get())
+			.requires(Items.COOKED_CHICKEN)
+			.requires(Items.BOWL)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE_COOKED.get()).build()))
+			.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shaped(RecipeCategory.FOOD, GrowthcraftRiceItems.ONIGIRI.get(), 1)
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.pattern(" R ")
+			.pattern(" S ")
+			.pattern(" K ")
+			.define('S', GrowthcraftTags.Items.SALT)
+			.define('R', GrowthcraftRiceItems.RICE_COOKED.get())
+			.define('K', Items.DRIED_KELP)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftRiceItems.RICE_COOKED.get()))
+			.save(consumer);
+
+		GrowthcraftRecipeBuilder.crafting_shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.PACKED_MUD)
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.requires(GrowthcraftRiceItems.RICE_STALK.get())
+			.requires(Blocks.MUD)
+			.group(Reference.MODID)
+			.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftRiceItems.RICE_STALK.get()).build()))
+			.save(consumer);
+
+		//Mekanism Bio Fuel recipe, may not be needed in 1.21
 		ItemStackToItemStackRecipeBuilder.crushing(
 				IngredientCreatorAccess.item().from(GrowthcraftRiceItems.RICE_STALK.get()),
 				MekanismItems.BIO_FUEL.getItemStack(2)
-				).addCondition(new ModLoadedCondition("mekanism"))
-		.build(consumer, new ResourceLocation(Reference.MODID, Mekanism.MODID + "/crushing/biofuel/" + GrowthcraftRiceItems.RICE_STALK.get()));
+				)
+			.addCondition(new ModLoadedCondition("mekanism"))
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.build(consumer, new ResourceLocation(Reference.MODID, Mekanism.MODID + "/crushing/biofuel/" + GrowthcraftRiceItems.RICE_STALK.get()));
 		
 		//ImmersiveEngineering
 		ClocheRecipeBuilder.builder(new ItemStack(GrowthcraftRiceItems.RICE.get(), 2))
-		.addResult(new ItemStack(GrowthcraftRiceItems.RICE_STALK.get(), 3))
-		.addInput(GrowthcraftRiceItems.RICE_GRAINS.get())
-		.addSoil(Blocks.DIRT)
-		.setTime(1000)
-		.setRender(new ClocheRenderReference("crop", GrowthcraftRiceBlocks.RICE_CROP.get()))
-		.build(consumer, new ResourceLocation(Reference.MODID, ImmersiveEngineering.MODID + "/cloche/rice"));
+			.addCondition(new ModLoadedCondition("immersiveengineering"))
+			.addCondition(new OptionalFeatureCondition(Reference.NAME_SHORT))
+			.addResult(new ItemStack(GrowthcraftRiceItems.RICE_STALK.get(), 3))
+			.addInput(GrowthcraftRiceItems.RICE_GRAINS.get())
+			.addSoil(Blocks.DIRT)
+			.setTime(1000)
+			.setRender(new ClocheRenderReference("crop", GrowthcraftRiceBlocks.RICE_CROP.get()))
+			.build(consumer, new ResourceLocation(Reference.MODID, ImmersiveEngineering.MODID + "/cloche/rice"));
 	}
 	
     @Override

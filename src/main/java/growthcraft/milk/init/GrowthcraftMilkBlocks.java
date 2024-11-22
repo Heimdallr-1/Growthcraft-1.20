@@ -239,10 +239,10 @@ public class GrowthcraftMilkBlocks {
 
     /////////// shop signs ////////////
 
-    private static final RegistryObject<Block> SHOP_SIGN_1_OAK = registerBlock("hanging_sign_1_oak", () -> makeSign(Blocks.OAK_HANGING_SIGN));
-    private static final RegistryObject<Block> SHOP_SIGN_2_OAK = registerBlock("hanging_sign_2_oak", () -> makeSign(Blocks.OAK_WALL_HANGING_SIGN));
-    private static final RegistryObject<Block> SHOP_SIGN_1_SPRUCE = registerBlock("hanging_sign_1_spruce", () -> makeSign(Blocks.SPRUCE_HANGING_SIGN));
-    private static final RegistryObject<Block> SHOP_SIGN_2_SPRUCE = registerBlock("hanging_sign_2_spruce", () -> makeSign(Blocks.SPRUCE_WALL_HANGING_SIGN));
+    private static final RegistryObject<Block> SHOP_SIGN_1_OAK = registerBlock("hanging_sign_1_oak", () -> makeSign(Blocks.OAK_HANGING_SIGN), true);
+    private static final RegistryObject<Block> SHOP_SIGN_2_OAK = registerBlock("hanging_sign_2_oak", () -> makeSign(Blocks.OAK_WALL_HANGING_SIGN), true);
+    private static final RegistryObject<Block> SHOP_SIGN_1_SPRUCE = registerBlock("hanging_sign_1_spruce", () -> makeSign(Blocks.SPRUCE_HANGING_SIGN), true);
+    private static final RegistryObject<Block> SHOP_SIGN_2_SPRUCE = registerBlock("hanging_sign_2_spruce", () -> makeSign(Blocks.SPRUCE_WALL_HANGING_SIGN), true);
 
     ///////////////////////////////////
 

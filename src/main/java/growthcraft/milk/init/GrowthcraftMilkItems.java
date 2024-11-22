@@ -246,9 +246,8 @@ public class GrowthcraftMilkItems {
         float f2 = 0.65F;
         float f3 = 0.85F;
         float f4 = 1.0F;
-
-        ComposterBlock.COMPOSTABLES.put(GrowthcraftMilkItems.THISTLE_SEED.get(), f2);
-
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftMilkItems.THISTLE_SEED.get(), f);
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftMilkItems.THISTLE.get(), f1);
     }
 
     public static boolean excludeItemRegistry(ResourceLocation registryName) {
