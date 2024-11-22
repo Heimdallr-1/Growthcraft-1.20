@@ -155,6 +155,10 @@ public class GrowthcraftCellarItems {
             GRAIN_AMBER, GRAIN_BROWN, GRAIN_COPPER, GRAIN_DARK, GRAIN_DEEP_AMBER,
             GRAIN_DEEP_COPPER, GRAIN_GOLDEN, GRAIN_PALE_GOLDEN
     );
+    
+    public static final RegistryObject<GrowthcraftItem> CORK_BARK = ITEMS.register(
+            Reference.UnlocalizedName.CORK_BARK, GrowthcraftItem::new
+    );
 
     public static void registerCompostables() {
         float f0 = 0.3F;

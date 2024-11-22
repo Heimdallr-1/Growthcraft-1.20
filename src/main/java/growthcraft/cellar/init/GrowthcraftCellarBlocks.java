@@ -3,6 +3,8 @@ package growthcraft.cellar.init;
 import java.util.function.Supplier;
 
 import growthcraft.cellar.block.BrewKettleBlock;
+import growthcraft.cellar.block.CorkCoasterBlock;
+import growthcraft.cellar.block.CorkLog;
 import growthcraft.cellar.block.CultureJarBlock;
 import growthcraft.cellar.block.FermentationBarrelBlock;
 import growthcraft.cellar.block.FruitPressBlock;
@@ -122,12 +124,12 @@ public class GrowthcraftCellarBlocks {
 
     public static final RegistryObject<Block> CORK_WOOD_LOG = registerBlock(
             Reference.UnlocalizedName.CORK_WOOD_LOG,
-            GrowthcraftLogBlock::new
+            CorkLog::new
     );
 
     public static final RegistryObject<Block> CORK_WOOD_LOG_STRIPPED = registerBlock(
             Reference.UnlocalizedName.CORK_WOOD_LOG_STRIPPED,
-            GrowthcraftLogBlock::new
+            CorkLog::new
     );
 
     public static final RegistryObject<Block> CORK_WOOD_STRIPPED = registerBlock(
@@ -138,6 +140,11 @@ public class GrowthcraftCellarBlocks {
     public static final RegistryObject<Block> CORK_TREE_LEAVES = registerBlock(
             Reference.UnlocalizedName.CORK_TREE_LEAVES,
             () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES))
+    );
+    
+    public static final RegistryObject<Block> CORK_COASTER = registerBlock(
+            Reference.UnlocalizedName.CORK_COASTER,
+            CorkCoasterBlock::new
     );
 
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block) {

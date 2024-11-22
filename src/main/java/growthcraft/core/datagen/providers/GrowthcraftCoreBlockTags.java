@@ -2,17 +2,13 @@ package growthcraft.core.datagen.providers;
 
 import java.util.concurrent.CompletableFuture;
 
-import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagEntry;
 import org.jetbrains.annotations.Nullable;
 
 import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesTags;
+import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.cellar.init.GrowthcraftCellarBlocks;
-import growthcraft.cellar.init.GrowthcraftCellarItems;
-import growthcraft.cellar.init.GrowthcraftCellarTags;
 import growthcraft.core.init.GrowthcraftBlocks;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.core.shared.Reference;
@@ -20,7 +16,9 @@ import growthcraft.milk.init.GrowthcraftMilkBlocks;
 import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
