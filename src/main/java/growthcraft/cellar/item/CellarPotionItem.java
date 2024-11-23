@@ -1,5 +1,11 @@
 package growthcraft.cellar.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import org.jetbrains.annotations.NotNull;
+
 import growthcraft.lib.item.GrowthcraftItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
@@ -12,15 +18,14 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nullable;
-import java.awt.*;
-import java.util.List;
 
 public class CellarPotionItem extends GrowthcraftItem {
 
@@ -102,7 +107,8 @@ public class CellarPotionItem extends GrowthcraftItem {
     }
 
     @Override
-    public int getColor(int layer) {
-        return layer == 0 ? new Color(0xCFA26F).getRGB() : 0xFFFFFF;
+    public int getColor(ItemStack itemStack, int layer) {
+    	CompoundTag tag = itemStack.getTag();
+    	return layer == 0 ? tag != null ? itemStack.getTag().getInt("color") : 0xFFFFFF : 0xFFFFF;
     }
 }

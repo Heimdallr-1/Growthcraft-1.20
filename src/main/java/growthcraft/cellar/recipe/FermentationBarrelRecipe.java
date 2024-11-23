@@ -1,13 +1,20 @@
 package growthcraft.cellar.recipe;
 
+import java.awt.Color;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 import growthcraft.cellar.GrowthcraftCellar;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.lib.utils.EffectUtils;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -23,10 +30,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.awt.*;
 
 public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
 
@@ -48,12 +51,14 @@ public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
         this.potionItemStack = bottle;
         this.color = color;
 
+        CompoundTag tag = potionItemStack.getOrCreateTag();
+        tag.putInt("color", this.color.getRGB());
+        
         this.potionItemStack.setHoverName(
                 this.potionItemStack.getDisplayName().copy()
                         .append(" ")
                         .append(Component.translatable(this.outputFluidStack.getTranslationKey()))
-        );
-
+        ).setTag(tag);
     }
 
     @Override
