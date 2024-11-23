@@ -1,5 +1,10 @@
 {
   "type": "growthcraft_cellar:fermentation_barrel_recipe",
+  "conditions": [
+    {
+      "type": "forge:false"
+    }
+  ],
   "processing_time": 1200,
   "ingredient_item": {
     "item": "growthcraft_cellar:yeast_brewers",

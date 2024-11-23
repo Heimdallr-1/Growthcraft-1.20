@@ -1,0 +1,38 @@
+{
+  "type": "growthcraft:weighted_seed_replacer",
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "block": "minecraft:grass",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:tall_grass",
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    },
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "biome_tag": "forge:is_swamp",
+          "condition": "growthcraft:biome_loot_check"
+        },
+        {
+          "biome_tag": "minecraft:is_river",
+          "condition": "growthcraft:biome_loot_check"
+        }
+      ]
+    },
+    {
+      "condition": "growthcraft:module_loaded_loot_check",
+      "module": "rice"
+    }
+  ],
+  "item": "growthcraft_rice:rice_grains",
+  "percent_to_replace": 30,
+  "percent_to_void": 55
+}

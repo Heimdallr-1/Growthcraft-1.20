@@ -1,13 +1,21 @@
 {
-  "type": "growthcraft:add_item",
+  "type": "growthcraft:add_item_replacing_seeds",
   "conditions": [
     {
-      "chance": 0.2,
+      "chance": 0.15,
       "condition": "minecraft:random_chance"
     },
     {
       "block": "minecraft:grass",
       "condition": "minecraft:block_state_property"
+    },
+    {
+      "biome_tag": "forge:is_cold/overworld",
+      "condition": "growthcraft:biome_loot_check"
+    },
+    {
+      "condition": "growthcraft:module_loaded_loot_check",
+      "module": "milk"
     }
   ],
   "item": "growthcraft_milk:thistle_seed"

@@ -1,13 +1,17 @@
 {
-  "type": "growthcraft:add_item",
+  "type": "growthcraft:add_item_replacing_seeds",
   "conditions": [
     {
-      "chance": 0.2,
+      "chance": 0.1,
       "condition": "minecraft:random_chance"
     },
     {
       "block": "minecraft:grass",
       "condition": "minecraft:block_state_property"
+    },
+    {
+      "condition": "growthcraft:module_loaded_loot_check",
+      "module": "grapes"
     }
   ],
   "item": "growthcraft_cellar:grape_seeds_red"
